@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/panorbit_employee_portal/static/css/main.86d808f7.css",
-    "main.js": "/panorbit_employee_portal/static/js/main.a2811556.js",
+    "main.css": "/panorbit_employee_portal/static/css/main.5bf1f789.css",
+    "main.js": "/panorbit_employee_portal/static/js/main.80413b62.js",
     "static/js/787.c0c92d9e.chunk.js": "/panorbit_employee_portal/static/js/787.c0c92d9e.chunk.js",
     "index.html": "/panorbit_employee_portal/index.html",
-    "main.86d808f7.css.map": "/panorbit_employee_portal/static/css/main.86d808f7.css.map",
-    "main.a2811556.js.map": "/panorbit_employee_portal/static/js/main.a2811556.js.map",
+    "main.5bf1f789.css.map": "/panorbit_employee_portal/static/css/main.5bf1f789.css.map",
+    "main.80413b62.js.map": "/panorbit_employee_portal/static/js/main.80413b62.js.map",
     "787.c0c92d9e.chunk.js.map": "/panorbit_employee_portal/static/js/787.c0c92d9e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.86d808f7.css",
-    "static/js/main.a2811556.js"
+    "static/css/main.5bf1f789.css",
+    "static/js/main.80413b62.js"
   ]
 }
