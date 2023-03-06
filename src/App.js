@@ -1,15 +1,6 @@
-import React, { createContext, useState, useContext } from "react";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Navigate,
-  useLocation,
-} from "react-router-dom";
-import LandingPage from "./pages/LandingPage";
-import UserPage from "./pages/UserPage";
-import UserProfile from "./components/UserProfile";
-import ComingSoon from "./components/ComingSoon";
+import React, { createContext, useState } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { LandingPage, UserPage } from "./pages";
 
 export const DataContext = createContext();
 function App() {

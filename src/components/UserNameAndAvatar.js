@@ -34,6 +34,9 @@ const UserNameAndAvatar = (props) => {
   );
 };
 
-UserNameAndAvatar.propTypes = {};
+UserNameAndAvatar.propTypes = {
+  path: PropTypes.string.isRequired,
+  userData: PropTypes.object.isRequired,
+};
 
 export default UserNameAndAvatar;

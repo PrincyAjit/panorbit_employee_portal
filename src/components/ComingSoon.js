@@ -1,16 +1,28 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react";
+import { Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
-const ComingSoon = props => {
+const useStyles = makeStyles({
+  headingDiv: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "100%",
+  },
+  heading: {
+    color: "#eeeeee",
+    fontWeight: 700,
+  },
+});
+const ComingSoon = () => {
+  const classes = useStyles();
   return (
-    <div>
-      Coming Soon
+    <div className={classes.headingDiv}>
+      <Typography variant="h1" className={classes.heading}>
+        Coming Soon
+      </Typography>
     </div>
-  )
-}
+  );
+};
 
-ComingSoon.propTypes = {
-
-}
-
-export default ComingSoon
+export default ComingSoon;

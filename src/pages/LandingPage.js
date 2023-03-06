@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { DataContext } from "../App";
-import ScrollableCard from "../components/ScrollableCard";
+import { ScrollableCard } from "../components";
 import { makeStyles } from "@material-ui/core/styles";
-import clsx from "clsx";
 
 const LandingPage = () => {
   const useStyles = makeStyles({
@@ -43,9 +42,15 @@ const LandingPage = () => {
   const [userData, setUserData] = useState([]);
   const { setUserDataInContext } = useContext(DataContext);
   const fetchUserData = async () => {
-    const response = await fetch(" https://panorbit.in/api/users.json");
-    const dataReceived = await response.json();
-    return dataReceived.users;
+    let dataReceived;
+    try {
+      const response = await fetch(" https://panorbit.in/api/users.json");
+      dataReceived = await response.json();
+      dataReceived = dataReceived?.users;
+    } catch (e) {
+      dataReceived = [];
+    }
+    return dataReceived;
   };
 
   useEffect(() => {
@@ -56,9 +61,6 @@ const LandingPage = () => {
     });
   }, []);
 
-  useEffect(() => {
-    console.log({ userData });
-  }, [userData]);
   return (
     <div className={classes.root}>
       <div className={classes.card}>

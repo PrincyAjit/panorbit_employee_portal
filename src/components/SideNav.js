@@ -6,7 +6,7 @@ import {
   List,
   ListItem,
   ListItemText,
-  MenuItem,
+  Typography,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
@@ -31,6 +31,9 @@ const useStyles = makeStyles({
   },
   unselectedItem: {
     color: "#a5a5e4",
+  },
+  menuItemText: {
+    fontSize: "1.1rem !important",
   },
   divider: {
     backgroundColor: "#8f91dd",
@@ -68,7 +71,9 @@ const SideNav = (props) => {
               )}
             >
               <ListItemText>
-                {menuItem}
+                <Typography className={classes.menuItemText}>
+                  {menuItem}
+                </Typography>
                 {notLastEntry(index) && <Divider className={classes.divider} />}
               </ListItemText>
               <ChevronRightIcon
@@ -82,6 +87,10 @@ const SideNav = (props) => {
   );
 };
 
-SideNav.propTypes = {};
+SideNav.propTypes = {
+  sideNavMenuItems: PropTypes.array.isRequired,
+  selectedMenuItem: PropTypes.string.isRequired,
+  itemOnClick: PropTypes.func.isRequired,
+};
 
 export default SideNav;

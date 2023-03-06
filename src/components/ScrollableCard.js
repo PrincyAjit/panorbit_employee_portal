@@ -1,17 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {
-  Card,
-  CardContent,
-  Avatar,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemText,
-  Divider,
-} from "@material-ui/core";
+import { Card, CardContent, List, Divider } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import UserNameAndAvatar from "./UserNameAndAvatar";
+import NoDataFound from "./NoDataFound";
 
 const ScrollableCard = ({ cardTitle, data: usersData }) => {
   const useStyles = makeStyles({
@@ -28,15 +20,18 @@ const ScrollableCard = ({ cardTitle, data: usersData }) => {
       color: "#545454",
       fontSize: "1.4em",
       fontWeight: 600,
-      textAlign: "center",
+      // textAlign: "center",
     },
     cardContent: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
       padding: "0 !important",
       backgroundColor: "#f6f6f6",
     },
     userDataList: {
       maxHeight: 380,
-      margin: "auto",
+      width: "100%",
       overflowY: "scroll",
       scrollbarWidth: "thin",
       backgroundColor: "white",
@@ -50,7 +45,7 @@ const ScrollableCard = ({ cardTitle, data: usersData }) => {
   const classes = useStyles();
   const cardTitleDefaultValue = "Select an account";
   const notLastEntry = (index) => index < usersData?.length - 1;
-
+  const userDataExists = usersData?.length > 0;
   return (
     <div>
       <Card className={classes.root}>
@@ -58,20 +53,27 @@ const ScrollableCard = ({ cardTitle, data: usersData }) => {
           <h3 className={classes.cardTitle}>
             {cardTitle ?? cardTitleDefaultValue}
           </h3>
-          <List className={classes.userDataList}>
-            {usersData.map((user, index) => (
-              <>
-                <UserNameAndAvatar path="/user" userData={user} />
-                {notLastEntry(index) && <Divider />}
-              </>
-            ))}
-          </List>
+          {userDataExists ? (
+            <List className={classes.userDataList}>
+              {usersData.map((user, index) => (
+                <>
+                  <UserNameAndAvatar path="/user" userData={user} />
+                  {notLastEntry(index) && <Divider />}
+                </>
+              ))}
+            </List>
+          ) : (
+            <NoDataFound />
+          )}
         </CardContent>
       </Card>
     </div>
   );
 };
 
-ScrollableCard.propTypes = {};
+ScrollableCard.propTypes = {
+  cardTitle: PropTypes.string,
+  data: PropTypes.array.isRequired,
+};
 
 export default ScrollableCard;
