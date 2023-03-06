@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# Frontend Assignment
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+It is hosted using github pages and can be accessed via - [https://princyajit.github.io/panorbit_employee_portal/](https://princyajit.github.io/panorbit_employee_portal/) .
 
 ## Available Scripts
 
@@ -9,22 +11,27 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.\
+
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
+
 You may also see any lint errors in the console.
 
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
+
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\
+
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.\
+
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
@@ -39,32 +46,26 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## Custom scripts added
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### `"predeploy": "npm run build"`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### `"deploy": "gh-pages -d build"`
 
-### Code Splitting
+The **npm run deploy** command will cause the `predeploy` and `deploy` scripts defined in `package.json` to run.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Under the hood, the `predeploy` script will build a distributable version of the React app and store it in a folder named `build`. Then, the `deploy` script will push the contents of that folder to a new commit on the `gh-pages` branch of the GitHub repository, creating that branch if it doesn't already exist.
 
-### Analyzing the Bundle Size
+## Project Details
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Some of the important dependencies used in the project are:
 
-### Making a Progressive Web App
+1.  **MaterialUI**- It is an open-source React component library that implements Google’s Material Design. It includes a comprehensive collection of prebuilt components that are ready for use in production right out of the box.
+2.  **react-router-dom** - This package contains bindings for using [React Router](https://github.com/remix-run/react-router) in web applications.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Project Structure
 
-### Advanced Configuration
+In the existing project structure of react, two new folders were added under the **src** folder which are:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1.  **components** - Consists of individual/atomic components required in other components or pages.
+2.  **pages** - Consists of pages of the project.
