@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/panorbit_employee_portal/static/css/main.5bf1f789.css",
-    "main.js": "/panorbit_employee_portal/static/js/main.80413b62.js",
+    "main.js": "/panorbit_employee_portal/static/js/main.99cc87da.js",
     "static/js/787.c0c92d9e.chunk.js": "/panorbit_employee_portal/static/js/787.c0c92d9e.chunk.js",
     "index.html": "/panorbit_employee_portal/index.html",
     "main.5bf1f789.css.map": "/panorbit_employee_portal/static/css/main.5bf1f789.css.map",
-    "main.80413b62.js.map": "/panorbit_employee_portal/static/js/main.80413b62.js.map",
+    "main.99cc87da.js.map": "/panorbit_employee_portal/static/js/main.99cc87da.js.map",
     "787.c0c92d9e.chunk.js.map": "/panorbit_employee_portal/static/js/787.c0c92d9e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5bf1f789.css",
-    "static/js/main.80413b62.js"
+    "static/js/main.99cc87da.js"
   ]
 }
