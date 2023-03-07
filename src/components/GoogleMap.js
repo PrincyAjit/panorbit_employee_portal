@@ -6,7 +6,7 @@ const GoogleMap = (props) => {
   let { lat, long } = props;
   lat = parseFloat(lat);
   long = parseFloat(long);
-  console.log({ lat, long });
+
   return (
     <div style={{ height: "400px", width: "100%" }}>
       <GoogleMapReact

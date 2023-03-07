@@ -1,6 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { DataContext } from "../App";
 import { makeStyles } from "@material-ui/core/styles";
-import { SideNav, UserProfile, ComingSoon, UserMenu } from "../components";
+import {
+  SideNav,
+  UserProfile,
+  ComingSoon,
+  UserMenu,
+  ChatBox,
+} from "../components";
 import { Divider, Typography } from "@material-ui/core";
 import clsx from "clsx";
 
@@ -45,13 +52,34 @@ const useStyles = makeStyles({
 });
 const UserPage = () => {
   const classes = useStyles();
+  const mainChatWindowRightPos = 15;
+  const chatWindowWidth = 18; // defined as 18vw in ChatBox component.
+  const { userDataInContext } = useContext(DataContext);
+  const userDataExists = userDataInContext?.length > 0;
   const [selectedMenuItem, setSelectedMenuItem] = useState(sideNavMenuItems[0]);
+  const [selectedUsersInChat, setSelectedUsersInChat] = useState([]);
+
   const itemOnClick = (menuItem) => {
     setSelectedMenuItem(menuItem);
   };
 
   const setDefaultSelection = () => {
     setSelectedMenuItem(sideNavMenuItems[0]);
+  };
+
+  const inChatUserSelection = (selectedUserData) => {
+    const isUserAlreadySelected = selectedUsersInChat?.some(
+      (user) => user.id === selectedUserData.id
+    );
+    !isUserAlreadySelected &&
+      setSelectedUsersInChat([...selectedUsersInChat, selectedUserData]);
+  };
+
+  const closeUserChat = (userToRemove) => {
+    const updatedUsers = selectedUsersInChat?.filter(
+      (user) => user.id !== userToRemove.id
+    );
+    setSelectedUsersInChat(updatedUsers);
   };
 
   const Header = () => {
@@ -71,6 +99,17 @@ const UserPage = () => {
   const MainView = () => {
     return sideNavMenuComponents[selectedMenuItem];
   };
+
+  const userChatBoxPosition = (index) => {
+    const firstChat = index === 0;
+    const leftSpacing = firstChat ? 20 : 15;
+    const chatWindowCount = index + 1;
+    const chatBoxStartPos =
+      (mainChatWindowRightPos * chatWindowWidth + leftSpacing) *
+      chatWindowCount;
+    return chatBoxStartPos;
+  };
+
   return (
     <div className={classes.root}>
       <SideNav
@@ -83,6 +122,24 @@ const UserPage = () => {
         <Divider className={classes.divider} />
         <MainView />
       </div>
+      {userDataExists && (
+        <>
+          <ChatBox
+            data={{ userListData: userDataInContext }}
+            isUserList={true}
+            setSelectedUsersInChat={inChatUserSelection}
+            chatBoxRightPos={mainChatWindowRightPos}
+          />
+          {selectedUsersInChat?.map((selectedUser, index) => (
+            <ChatBox
+              data={{ selectedUserData: selectedUser }}
+              closeUserChat={closeUserChat}
+              isUserList={false}
+              chatBoxRightPos={userChatBoxPosition(index)}
+            />
+          ))}
+        </>
+      )}
     </div>
   );
 };

@@ -6,6 +6,7 @@ import SideNav from "./SideNav";
 import UserMenu from "./UserMenu";
 import UserNameAndAvatar from "./UserNameAndAvatar";
 import UserProfile from "./UserProfile";
+import ChatBox from "./ChatBox";
 
 export {
   ComingSoon,
@@ -16,4 +17,5 @@ export {
   UserMenu,
   UserNameAndAvatar,
   UserProfile,
+  ChatBox,
 };

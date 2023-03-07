@@ -57,7 +57,11 @@ const ScrollableCard = ({ cardTitle, data: usersData }) => {
             <List className={classes.userDataList}>
               {usersData.map((user, index) => (
                 <>
-                  <UserNameAndAvatar path="/user" userData={user} />
+                  <UserNameAndAvatar
+                    path="/user"
+                    userData={user}
+                    componentAs="link"
+                  />
                   {notLastEntry(index) && <Divider />}
                 </>
               ))}

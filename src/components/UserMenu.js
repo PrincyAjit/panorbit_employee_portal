@@ -140,7 +140,11 @@ const UserMenu = (props) => {
                   setDefaultSelection();
                 }}
               >
-                <UserNameAndAvatar path="/user" userData={user} />
+                <UserNameAndAvatar
+                  path="/user"
+                  userData={user}
+                  componentAs="link"
+                />
               </MenuItem>
               {notLastEntry(index) && <Divider />}
             </>

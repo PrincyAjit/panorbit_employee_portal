@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { DataContext } from "../App";
 import { ScrollableCard } from "../components";
 import { makeStyles } from "@material-ui/core/styles";
@@ -39,32 +39,15 @@ const LandingPage = () => {
     },
   });
   const classes = useStyles();
-  const [userData, setUserData] = useState([]);
-  const { setUserDataInContext } = useContext(DataContext);
-  const fetchUserData = async () => {
-    let dataReceived;
-    try {
-      const response = await fetch(" https://panorbit.in/api/users.json");
-      dataReceived = await response.json();
-      dataReceived = dataReceived?.users;
-    } catch (e) {
-      dataReceived = [];
-    }
-    return dataReceived;
-  };
-
-  useEffect(() => {
-    fetchUserData().then((userDataReceived) => {
-      console.log({ userDataReceived });
-      setUserData(userDataReceived);
-      setUserDataInContext(userDataReceived);
-    });
-  }, []);
+  const { userDataInContext } = useContext(DataContext);
 
   return (
     <div className={classes.root}>
       <div className={classes.card}>
-        <ScrollableCard cardTitle="Select an account" data={userData} />
+        <ScrollableCard
+          cardTitle="Select an account"
+          data={userDataInContext}
+        />
       </div>
     </div>
   );
